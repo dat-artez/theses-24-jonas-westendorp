@@ -13,7 +13,7 @@
 		title = title + 'a';
 	}
 
-	function mouseDown(e: MouseEvent) {
+	function handleMouseDown(e: MouseEvent) {
 		e.stopPropagation();
 		e.preventDefault();
 
@@ -27,6 +27,17 @@
 		mouseOffsetBar = [clientX - x, clientY - y];
 
 		focus();
+
+		// listen for the other mouse events; and remove listeners once dragging has stopped
+		document.body.addEventListener('mousemove', handleMouseMove);
+		document.body.addEventListener(
+			'mouseup',
+			(e) => {
+				isDragging = false;
+				document.body.removeEventListener('mousemove', handleMouseMove);
+			},
+			{ once: true }
+		);
 	}
 
 	function handleMouseMove(e: MouseEvent) {
@@ -46,13 +57,7 @@
 	style={`top:${pos.y}px;left:${pos.x}px;`}
 >
 	<div class="window">
-		<div
-			class="title-bar"
-			on:mousedown={mouseDown}
-			on:mouseup={(e) => (isDragging = false)}
-			on:mouseout={(e) => (isDragging = false)}
-			on:mousemove={handleMouseMove}
-		>
+		<div class="title-bar" on:mousedown={handleMouseDown}>
 			<button aria-label="Close" class="close" on:click={handleClose}></button>
 			<h1 class="title">{title}</h1>
 			<button aria-label="Resize" class="resize"></button>
@@ -60,11 +65,6 @@
 		<div class="separator"></div>
 
 		<div class="window-pane">Hello world!</div>
-		{#if isDragging}
-			dragging
-		{:else}
-			not dragging
-		{/if}
 	</div>
 </div>
 

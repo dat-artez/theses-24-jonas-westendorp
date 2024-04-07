@@ -4,14 +4,6 @@
 	let windows = [{ title: '0. Preface' }, { title: '1. Introduction' }];
 
 	function focusWindow(title: string) {
-		// let windowIndex = null;
-		// let window = windows.find((x, i) => {
-		// 	if (x.title === title) {
-		// 		windowIndex = i;
-		// 		return x.title === title;
-		// 	}
-		// });
-
 		let focusWindow = null;
 		//remove the focuswindow
 		let newWindows = windows.filter((win) => {
@@ -37,7 +29,6 @@
 		{#each windows as window (window.title)}
 			<Window title={window.title} focus={() => focusWindow(window.title)} />
 		{/each}
-		<!-- <Window title={'1. introduction'} focus={() => focusWindow('1. introduction')} /> -->
 	</body>
 </html>
 
