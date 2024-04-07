@@ -1,7 +1,10 @@
 <script lang="ts">
+	import Markdown from '@magidoc/plugin-svelte-marked';
+	import myMarkdown from '../lib/data/0-preface/index.md?raw';
 	// props
 	export let title: String;
 	export let focus;
+	export let close;
 
 	// state
 	let windowElement: HTMLDivElement;
@@ -9,10 +12,7 @@
 	let pos = { x: 5, y: 5 };
 	let mouseOffsetBar: [number, number] = [0, 0];
 
-	function handleClose() {
-		title = title + 'a';
-	}
-
+	// handlers
 	function handleMouseDown(e: MouseEvent) {
 		e.stopPropagation();
 		e.preventDefault();
@@ -56,15 +56,17 @@
 	class="draggable-container"
 	style={`top:${pos.y}px;left:${pos.x}px;`}
 >
-	<div class="window">
+	<div class="window" on:click={focus}>
 		<div class="title-bar" on:mousedown={handleMouseDown}>
-			<button aria-label="Close" class="close" on:click={handleClose}></button>
+			<button aria-label="Close" class="close" on:click={close}></button>
 			<h1 class="title">{title}</h1>
 			<button aria-label="Resize" class="resize"></button>
 		</div>
 		<div class="separator"></div>
 
-		<div class="window-pane">Hello world!</div>
+		<div class="window-pane">
+			<Markdown source={myMarkdown} />
+		</div>
 	</div>
 </div>
 
@@ -74,5 +76,16 @@
 	}
 	.title-bar:hover {
 		cursor: grab;
+	}
+
+	.window-pane {
+		max-height: 90vh;
+	}
+
+	:global(h1) {
+		font-size: 2em;
+	}
+	:global(h2) {
+		font-size: 1em;
 	}
 </style>
