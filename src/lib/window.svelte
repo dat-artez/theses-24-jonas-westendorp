@@ -9,7 +9,7 @@
 	// state
 	let windowElement: HTMLDivElement;
 	let isDragging: boolean = false;
-	let pos = { x: 5, y: 5 };
+	let pos = { x: 5, y: 150 };
 	let mouseOffsetBar: [number, number] = [0, 0];
 
 	// handlers

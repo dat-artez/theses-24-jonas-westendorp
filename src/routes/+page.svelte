@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Window from '$lib/window.svelte';
+	import Icon from '$lib/icon.svelte';
 
-	let windows = [{ title: '0. Preface' }, { title: '1. Introduction' }];
+	const windowData = [{ title: '0. Preface' }, { title: '1. Introduction' }];
+	let windows = [...windowData];
 
 	function focusWindow(title: string) {
 		let focusWindow = null;
@@ -19,6 +21,16 @@
 	function closeWindow(title: string) {
 		windows = windows.filter((win) => win.title !== title);
 	}
+
+	function addWindow(title: string) {
+		let window = windowData.find((x) => x.title === title);
+
+		windows = [...windows, window];
+	}
+
+	function handleIconClick() {
+		addWindow('0. Preface');
+	}
 </script>
 
 <html lang="en">
@@ -31,6 +43,10 @@
 	</head>
 
 	<body>
+		<div class="icon-grid">
+			<Icon click={handleIconClick} />
+		</div>
+
 		{#each windows as window (window.title)}
 			<Window
 				title={window.title}
@@ -52,5 +68,16 @@
 		width: 100vw;
 		height: 100vh;
 		overflow: hidden;
+	}
+	.icon-grid {
+		display: grid;
+		justify-content: end;
+		/* grid-template-columns: auto 1fr 1fr; */
+		padding: 3rem;
+	}
+
+	label {
+		border: 1px black solid;
+		background: white;
 	}
 </style>
