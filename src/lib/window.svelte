@@ -81,46 +81,70 @@
 		<div class="title-bar" on:mousedown={moveWindow}>
 			<button aria-label="Close" class="close" on:click={close}></button>
 			<h1 class="title">{title}</h1>
-			<button aria-label="Resize" class="resize"></button>
+			<!-- <button aria-label="Resize" class="resize"></button> -->
 		</div>
 		<div class="separator"></div>
 
 		<div class="window-pane">
 			<Markdown source={myMarkdown} />
 		</div>
+
+		<div class="separator"></div>
+		<div class="footer-bar">
+			<button on:mousedown={resizeWindow} aria-label="Resize" class="resize"></button>
+		</div>
 	</div>
-	<div class="scale-corner" on:mousedown={resizeWindow}>x</div>
 </div>
 
 <style>
 	.draggable-container {
+		min-height: 12rem;
 		position: absolute;
+	}
+
+	.footer-bar {
+		display: flex;
+		justify-content: end;
+		position: relative;
+		height: 22px;
+	}
+	::-webkit-scrollbar-track {
+		border-left: 1px solid black !important;
+	}
+	.resize {
+		cursor: se-resize;
+		box-sizing: border-box;
+		background:
+			linear-gradient(#000, #000) left 58%,
+			linear-gradient(180deg, #000 0, #000) 58% top;
+		background-color: #fff;
+		background-repeat: no-repeat;
+		background-size:
+			60% 2px,
+			2px 60%;
+		border: 1px solid #000;
+		display: block;
+		height: 22px;
+		position: relative;
+		width: 22px;
 	}
 	.window {
 		width: 100%;
 		height: 100%;
 		margin: 0;
 		display: grid;
-		grid-template-rows: auto 1rem;
+		filter: drop-shadow(2px 2px 0px black);
+		/* grid-template-rows: auto 1rem; */
 	}
 	.title-bar:hover {
 		cursor: grab;
-	}
-
-	.scale-corner {
-		width: 10px;
-		height: 10px;
-		background-color: red;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		cursor: se-resize;
 	}
 
 	.window-pane {
 		max-height: 80vh;
 		max-width: 80vw;
 		box-sizing: border-box;
+		overflow-x: hidden;
 	}
 
 	:global(h1) {
