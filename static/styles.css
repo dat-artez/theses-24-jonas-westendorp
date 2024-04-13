@@ -1,3 +1,8 @@
+body{
+    background: linear-gradient(90deg, #fff 1px, transparent 1%) 50%, linear-gradient(#fff 1px, transparent 1%) 50%, #000;
+    background-size: 2px 2px;
+}
+
 h1 {
     font-size: 2em;
 }
@@ -17,3 +22,4 @@ figcaption {
     font-size: 0.9rem;
     text-align: center;
 }
+

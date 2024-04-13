@@ -44,7 +44,9 @@
 
 	<body>
 		<div class="icon-grid">
-			<Icon click={handleIconClick} />
+			<Icon title="0. Preface" icon="File-Text.png" click={handleIconClick} />
+			<Icon title="1. Introduction" icon="Macintosh-Happy.png" click={handleIconClick} />
+			<Icon title="2. Blue Screen of Death" icon="Macintosh-Unhappy.png" click={handleIconClick} />
 		</div>
 
 		{#each windows as window (window.title)}
@@ -74,6 +76,7 @@
 		justify-content: end;
 		/* grid-template-columns: auto 1fr 1fr; */
 		padding: 3rem;
+		gap: 3rem;
 	}
 
 	label {
