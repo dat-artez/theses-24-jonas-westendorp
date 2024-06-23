@@ -2,7 +2,7 @@
 
 ## Etymology
 
-From inter- (“between”) +‎ face (“shape, figure, form”)
+From inter- (“between”) +‎ face (“shape, figure, form”) [[1]](#cite-1)
 
 ## Noun
 
@@ -15,7 +15,7 @@ From inter- (“between”) +‎ face (“shape, figure, form”)
 ## Verb
 
 - to connect by means of an interface
-  <br>| interface a machine with a computer
+  <br>| interface a machine with a computer [[2]](#cite-2)
 
 # Inter‧face: my interpretation
 
@@ -29,3 +29,12 @@ Take for instance the medium Whatsapp. It can be the connection between two pers
 </figure>
 
 The devices that we use for our communication are not just technical parts of a medium, they are (active) participants in it and they therefore also change how we experience communication. So when examining the interface, we therefore also have to acknowledge the “face” of our devices. We can therefore interpret the word inter-face as the place in between the faces. It is the place where we transfer a thought from our “face” onto the “face” of a medium. It can be seen as the translation layer of a medium, an interpreter from a human language to a device's language.
+
+---
+
+<li id="cite-1">
+1: “English:Etymology”, Interface, Wiktionary, last modified September 8, 2023, https://en.wiktionary.org/wiki/interface
+</li>
+<li id="cite-2">
+2: “Dictionary”, Interface, Merriam Webster , last modified March 19, 2024, https://www.merriam-webster.com/dictionary/interface
+</li>

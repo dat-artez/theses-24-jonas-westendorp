@@ -1,16 +1,23 @@
 <script lang="ts">
 	import Markdown from '@magidoc/plugin-svelte-marked';
-	import myMarkdown from '../lib/data/0-preface/index.md?raw';
+	import { browser } from '$app/environment';
+	// import myMarkdown from '../lib/data/0-preface/index.md?raw';
 	// props
 	export let title: String;
 	export let focus;
 	export let close;
 	export let isActive: boolean;
+	export let markdown;
 
 	// state
 	let windowElement: HTMLDivElement;
 	let isDragging: boolean = false;
-	let window = { x: 5, y: 5, width: 780, height: 500 };
+	let windowState = {
+		x: browser ? window.innerWidth / 2 - 780 / 2 : 5,
+		y: browser ? window.innerHeight / 2 - 500 / 2 : 5,
+		width: 780,
+		height: 500
+	};
 	let mouseOffsetBar: [number, number] = [0, 0];
 
 	// handlers
@@ -51,8 +58,8 @@
 		let [xOffset, yOffset] = mouseOffsetBar;
 
 		function move(e) {
-			window.x = e.clientX - xOffset;
-			window.y = e.clientY - yOffset;
+			windowState.x = e.clientX - xOffset;
+			windowState.y = e.clientY - yOffset;
 		}
 
 		handleMouseMove(move);
@@ -65,8 +72,8 @@
 		let rect = windowElement.getBoundingClientRect();
 
 		function move(e) {
-			window.width = e.clientX - rect.x;
-			window.height = e.clientY - rect.y;
+			windowState.width = e.clientX - rect.x;
+			windowState.height = e.clientY - rect.y;
 		}
 
 		handleMouseMove(move);
@@ -76,7 +83,7 @@
 <div
 	bind:this={windowElement}
 	class="draggable-container"
-	style={`top:${window.y}px;left:${window.x}px;width:${window.width}px;height:${window.height}px;`}
+	style={`top:${windowState.y}px;left:${windowState.x}px;width:${windowState.width}px;height:${windowState.height}px;`}
 >
 	<div class="window" on:click={focus}>
 		<div class={isActive ? 'title-bar' : 'inactive-title-bar'} on:mousedown={moveWindow}>
@@ -89,7 +96,7 @@
 		<div class="separator"></div>
 
 		<div class="window-pane">
-			<Markdown source={myMarkdown} />
+			<Markdown source={markdown} />
 		</div>
 
 		<div class="separator"></div>

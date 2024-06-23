@@ -2,6 +2,7 @@
 	export let click;
 	export let icon: 'File-Text.png' | 'Macintosh-Happy.png' | 'Macintosh-Unhappy.png';
 	export let title: string;
+	export let isActive: boolean;
 
 	let selected = false;
 
