@@ -33,43 +33,68 @@
 	}
 </script>
 
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="system.css" />
-		<link rel="stylesheet" href="styles.css" />
-	</head>
+<div class="container">
+	<nav>
+		<h1>From Interaction to Transaction</h1>
+	</nav>
 
-	<body>
+	<div class="windowContent">
 		<div class="icon-grid">
 			<Icon title="0. Preface" icon="File-Text.png" click={handleIconClick} />
 			<Icon title="1. Introduction" icon="Macintosh-Happy.png" click={handleIconClick} />
 			<Icon title="2. Blue Screen of Death" icon="Macintosh-Unhappy.png" click={handleIconClick} />
 		</div>
 
-		{#each windows as window (window.title)}
+		<div class="window notes">Sticky notes</div>
+
+		{#each windows as window, i (window.title)}
 			<Window
 				title={window.title}
 				close={() => closeWindow(window.title)}
 				focus={() => focusWindow(window.title)}
+				isActive={i === windows.length - 1}
 			/>
 		{/each}
-	</body>
-</html>
+	</div>
+</div>
 
 <style>
 	/* html {
 		margin: 0;
 		padding: 0;
 	} */
-	body {
-		margin: 0;
-		padding: 0;
-		width: 100vw;
-		height: 100vh;
+	.windowContent {
+		height: 100%;
+		width: 100%;
 		overflow: hidden;
+		position: absolute;
+	}
+
+	.container {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		display: grid;
+		grid-template-rows: 30px 1fr;
+		background:
+			linear-gradient(90deg, #fff 1px, transparent 1%) 50%,
+			linear-gradient(#fff 1px, transparent 1%) 50%,
+			#000;
+		background-size: 2px 2px;
+		/* position: absolute; */
+		border: 0px solid black;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+	nav {
+		background: white;
+		/* z-index: 999; */
+		border-bottom: 1px solid black;
+	}
+	h1 {
+		margin: 0;
+		font-size: 1.1rem;
+		padding: 0.1rem 1rem;
 	}
 	.icon-grid {
 		display: grid;
@@ -82,5 +107,10 @@
 	label {
 		border: 1px black solid;
 		background: white;
+	}
+
+	.notes {
+		width: 400px;
+		height: 400px;
 	}
 </style>

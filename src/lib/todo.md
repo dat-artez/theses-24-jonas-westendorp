@@ -1,0 +1,8 @@
+- references -> different window?
+- mobile -> pop up that it is a desktop o.s.
+- mobile gestures
+- title
+- preface -> sticky notes?
+- dropdown
+  - contact
+  - github

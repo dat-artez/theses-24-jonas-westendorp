@@ -1,25 +1,29 @@
-body{
-    background: linear-gradient(90deg, #fff 1px, transparent 1%) 50%, linear-gradient(#fff 1px, transparent 1%) 50%, #000;
-    background-size: 2px 2px;
+body {
+	margin: 0;
+	padding: 0.5rem;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: #262626;
+	box-sizing: border-box;
 }
 
 h1 {
-    font-size: 2em;
+	font-size: 2em;
 }
 h2 {
-    font-size: 1em;
+	font-size: 1em;
 }
 
 img {
-    filter: grayscale();
-    image-rendering: pixelated;
-    width: 80%;
-    margin: auto;
-    display: block;
+	filter: grayscale();
+	image-rendering: pixelated;
+	width: 80%;
+	margin: auto;
+	display: block;
 }
 
 figcaption {
-    font-size: 0.9rem;
-    text-align: center;
+	font-size: 0.9rem;
+	text-align: center;
 }
-

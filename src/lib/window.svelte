@@ -5,11 +5,12 @@
 	export let title: String;
 	export let focus;
 	export let close;
+	export let isActive: boolean;
 
 	// state
 	let windowElement: HTMLDivElement;
 	let isDragging: boolean = false;
-	let window = { x: 5, y: 5, width: 400, height: 500 };
+	let window = { x: 5, y: 5, width: 780, height: 500 };
 	let mouseOffsetBar: [number, number] = [0, 0];
 
 	// handlers
@@ -78,8 +79,10 @@
 	style={`top:${window.y}px;left:${window.x}px;width:${window.width}px;height:${window.height}px;`}
 >
 	<div class="window" on:click={focus}>
-		<div class="title-bar" on:mousedown={moveWindow}>
-			<button aria-label="Close" class="close" on:click={close}></button>
+		<div class={isActive ? 'title-bar' : 'inactive-title-bar'} on:mousedown={moveWindow}>
+			{#if isActive}
+				<button aria-label="Close" class="close" on:click={close}></button>
+			{/if}
 			<h1 class="title">{title}</h1>
 			<!-- <button aria-label="Resize" class="resize"></button> -->
 		</div>
