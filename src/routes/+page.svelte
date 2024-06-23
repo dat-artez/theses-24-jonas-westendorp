@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const prerender = true;
 	import Window from '$lib/window.svelte';
 	import Icon from '$lib/icon.svelte';
 	import preface from '../lib/data/0-preface/index.md?raw';
