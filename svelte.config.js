@@ -1,3 +1,5 @@
+// https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
+
 import adapter from '@sveltejs/adapter-static';
 
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
